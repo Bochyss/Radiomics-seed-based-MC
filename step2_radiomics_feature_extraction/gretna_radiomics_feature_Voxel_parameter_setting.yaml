@@ -1,0 +1,56 @@
+#==============================================================================================================================================================
+# The file is a configuration file for pyRadiomics. For further detailed information, please refer to 
+# https://pyradiomics.readthedocs.io/en/latest/customization.html.
+#==============================================================================================================================================================
+
+#==============================================================================================================================================================
+# The key "imageType" is used to specify the image types used for the extraction of Radiomics features. By default, only the "Original" image type is enabled.
+#==============================================================================================================================================================
+imageType:
+  Original: {}
+  # Wavelet: {}
+  # LoG: {}
+
+#==============================================================================================================================================================
+# The key "featureClass" is used to specify the feature classes to be extracted from the image types specified by "imageType". By default, all feature classes 
+# are extracted. Of note, the "shape" and "shape2D" feature classes are invalid for voxel-based extraction of Radiomics features.
+#==============================================================================================================================================================
+featureClass:
+  firstorder:
+  shape:
+  shape2D:
+  glcm:
+  glrlm:
+  glszm:
+  gldm:
+  ngtdm:
+
+#==============================================================================================================================================================
+# The key "setting" is used to specify the parameters which control the pre-processing and customize the behavior of filters and feature classes.
+#
+#  wavelet:
+#          String specifying the type of wavelet decomposition. Default: "sym4".
+#    level:
+#          Positive integer specifying the number of levels in the wavelet decomposition. Default: 3.
+# binCount:
+#          Positive integer specifying the number of bins for extracting texture features. Default: 80.
+#==============================================================================================================================================================
+setting:
+  wavelet: sym4
+  level: 3
+  binCount: 80
+
+#==============================================================================================================================================================
+# The key "voxelSetting" is used to specify the parameters specific to voxel-based extraction of Radiomics features which control the neighborhood around each
+# voxel that is used for calculation and what the background value should be.
+# 
+# kernelRadius:
+#              Positive integer specifying the size of the kernel to be used as the radius from the center voxel, whose unit is the number of voxels. Therefore,
+#              the actual kernel size is 2 * kernelRadius + 1. Default: 6.
+#   voxelBatch:
+#              Positive integer specifying the maximum number of voxels that are calculated in one batch. Larger batches mean less loops in Python and therefore
+#              a quicker extraction, but more memory. Default: 2000.
+#==============================================================================================================================================================
+voxelSetting:
+  kernelRadius: 6
+  voxelBatch: 2000
